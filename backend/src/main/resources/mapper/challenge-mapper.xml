@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="challengeRepository">
+
+    <!-- 전체 챌린지 목록 조회 (필터링 없음) -->
+    <select id="findAllChallenges" resultType="challenge">
+        SELECT * FROM Challenges ORDER BY challenge_id DESC
+    </select>
+
+    <!-- 🎯 특정 언어의 챌린지 목록 조회 -->
+    <select id="findChallengesByLanguage" resultType="challenge">
+        SELECT * FROM Challenges WHERE language = #{language} ORDER BY challenge_id DESC
+    </select>
+
+    <!-- 특정 챌린지 상세 조회 -->
+    <select id="findChallengeById" resultType="challenge">
+        SELECT * FROM Challenges WHERE challenge_id = #{challengeId}
+    </select>
+
+    <!-- 전체 난이도 목록 조회 -->
+    <select id="findAllLevels" resultType="challengeLevel">
+        SELECT * FROM Challenge_Levels ORDER BY exp
+    </select>
+
+    <!-- 전체 카테고리 목록 조회 -->
+    <select id="findAllCategories" resultType="challengeCategory">
+        SELECT * FROM Challenge_Categorys ORDER BY category_id
+    </select>
+
+    <!-- 특정 난이도 조회 (이름으로) -->
+    <select id="findLevelByName" resultType="challengeLevel">
+        SELECT * FROM Challenge_Levels WHERE level_name = #{levelName}
+    </select>
+
+    <!-- 특정 난이도 조회 (ID로) -->
+    <select id="findLevelById" resultType="challengeLevel">
+        SELECT * FROM Challenge_Levels WHERE level_id = #{levelId}
+    </select>
+
+    <!-- 특정 카테고리 조회 (이름으로) -->
+    <select id="findCategoryByName" resultType="challengeCategory">
+        SELECT * FROM Challenge_Categorys WHERE category_name = #{categoryName}
+    </select>
+
+    <!-- 특정 카테고리 조회 (ID로) -->
+    <select id="findCategoryById" resultType="challengeCategory">
+        SELECT * FROM Challenge_Categorys WHERE category_id = #{categoryId}
+    </select>
+
+    <!-- 챌린지 완료자 수 조회 -->
+    <select id="getCompletedCount" resultType="int">
+        SELECT COUNT(*) FROM Challenge_sub WHERE challenge_id = #{challengeId}
+    </select>
+
+    <!-- 전체 챌린지 수 조회 -->
+    <select id="getTotalChallengeCount" resultType="int">
+        SELECT COUNT(*) FROM Challenges
+    </select>
+
+    <!-- 🎯 특정 챌린지의 통계 정보 조회 (제출수, 정답수, 정답률) -->
+    <select id="getChallengeStatistics" resultType="map">
+        SELECT 
+            COUNT(*) as totalSubmissions,
+            SUM(CASE WHEN pass = true THEN 1 ELSE 0 END) as correctSubmissions,
+            CASE 
+                WHEN COUNT(*) > 0 THEN 
+                    ROUND((SUM(CASE WHEN pass = true THEN 1 ELSE 0 END) * 100.0 / COUNT(*)), 1)
+                ELSE 0.0 
+            END as accuracyRate
+        FROM Challenge_sub 
+        WHERE challenge_id = #{challengeId}
+    </select>
+
+    <!-- 🎯 새로운 챌린지 등록 -->
+    <insert id="insertChallenge" parameterType="challenge">
+        INSERT INTO Challenges (
+            challenge_title,
+            level_id,
+            category_id,
+            language,
+            content,
+            hint,
+            correct
+        ) VALUES (
+            #{challenge_title},
+            #{level_id},
+            #{category_id},
+            #{language},
+            #{content},
+            #{hint},
+            #{correct}
+        )
+    </insert>
+
+    <!-- 🎯 데이터베이스에 등록된 모든 언어 목록 조회 -->
+    <select id="findAllLanguages" resultType="string">
+        SELECT DISTINCT language FROM Challenges 
+        WHERE language IS NOT NULL AND language != '' 
+        ORDER BY language
+    </select>
+
+    <!-- 🎯 챌린지 삭제 -->
+    <delete id="deleteChallenge" parameterType="int">
+        DELETE FROM Challenges WHERE challenge_id = #{challengeId}
+    </delete>
+
+</mapper>

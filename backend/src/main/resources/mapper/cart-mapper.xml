@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cartRepository">
+
+
+    <!-- 장바구니 존재 여부 확인 -->
+    <select id="findCartIdByUserId" resultType="cart" >
+        SELECT cart_id, user_id
+        FROM carts
+        WHERE user_id = #{user_id}
+    </select>
+
+    <select id="isCartExist" resultType="boolean">
+        SELECT EXISTS (SELECT 1 FROM carts WHERE user_id = #{user_id})
+    </select>
+
+
+    <!-- 장바구니 생성 -->
+    <insert id="createCart" parameterType="int">
+        INSERT INTO carts (user_id) VALUES (#{user_id})
+    </insert>
+
+    <!-- 장바구니에 상품 추가 -->
+    <insert id="addCartItem" parameterType="cartItem">
+        INSERT INTO cart_items (cart_id, product_id, quantity)
+        VALUES (#{cart_id}, #{product_id}, #{quantity})
+        ON DUPLICATE KEY UPDATE quantity = quantity + #{quantity}
+    </insert>
+
+    <!-- 장바구니 항목 페이징 조회 -->
+    <select id="getCartItemsByCartId" resultType="cartItem" parameterType="map">
+        SELECT * FROM cart_items
+        WHERE cart_id = #{cart_id}
+        ORDER BY added_at DESC
+            LIMIT #{start}, #{limit}
+    </select>
+
+    <!-- 선택된 장바구니 id를 cart에서 조회-->
+    <!-- product + quantity 조회 -->
+    <select id="getProductsInCart" resultType="map" parameterType="int">
+        SELECT
+            ci.cart_item_id,
+            p.product_id,
+            p.product_title,
+            p.stitle,
+            p.writer,
+            p.publisher,
+            p.content,
+            p.page,
+            p.price,
+            p.languages,
+            p.stock,
+            p.product_image,
+            ci.quantity
+        FROM carts c
+                 JOIN cart_items ci ON c.cart_id = ci.cart_id
+                 JOIN products p ON ci.product_id = p.product_id
+        WHERE c.user_id = #{user_id}
+    </select>
+
+    <!-- 장바구니 product_id 수량 업데이트-->
+    <update id="updateCartItemQuantity" parameterType="cartItem">
+        UPDATE cart_items
+        SET quantity = #{quantity}
+        WHERE cart_id = #{cart_id} AND product_id = #{product_id}
+    </update>
+
+    <!-- 장바구니 product_id 삭제-->
+    <delete id="removeCartItem" parameterType="cartItem">
+        DELETE FROM cart_items
+        WHERE cart_id = #{cart_id} AND product_id = #{product_id}
+    </delete>
+
+    <select id="findQuantityByCartIdAndProductId" parameterType="map" resultType="int">
+        SELECT quantity
+        FROM cart_items
+        WHERE cart_id = #{cart_id} AND product_id = #{product_id}
+    </select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- DB설정 properties로드 -->
+	<!-- <properties resource="/config/database.properties" /> -->
+
+
+
+	<typeAliases>
+		<typeAlias alias="userGrade" type="com.spring.project.dto.user.UserGradeDTO"/>
+		<typeAlias alias="user" type="com.spring.project.dto.user.UserDTO"/>
+		<typeAlias alias="product" type="com.spring.project.dto.product.ProductDTO"/>
+		<typeAlias alias="cart" type="com.spring.project.dto.cart.CartDTO"/>
+		<typeAlias alias="cartItem" type="com.spring.project.dto.cart.CartItemDTO"/>
+		<typeAlias alias="test" type="com.spring.project.dto.test.TestDTO"/>
+		<typeAlias alias="testCategory" type="com.spring.project.dto.test.TestCategoryDTO"/>
+		<typeAlias alias="testProblem" type="com.spring.project.dto.test.TestProblemDTO"/>
+		<typeAlias alias="testsub" type="com.spring.project.dto.test.TestSubDTO"/>
+		<typeAlias alias="testlevel" type="com.spring.project.dto.test.TestLevelDTO"/>
+		<typeAlias alias="testanswer" type="com.spring.project.dto.test.TestAnswerDetailDTO"/>
+		<typeAlias alias="challenge" type="com.spring.project.dto.challenge.ChallengeDTO"/>
+		<typeAlias alias="challengeLevel" type="com.spring.project.dto.challenge.ChallengeLevelDTO"/>
+		<typeAlias alias="challengeCategory" type="com.spring.project.dto.challenge.ChallengeCategoryDTO"/>
+		<typeAlias alias="challengeSub" type="com.spring.project.dto.challenge.ChallengeSubDTO"/>
+      	<typeAlias alias="post" type="com.spring.project.dto.post.PostsDTO"/>
+      	<typeAlias alias="postCategory" type="com.spring.project.dto.post.PostCategoryDTO"/>
+      	<typeAlias alias="comments" type="com.spring.project.dto.post.CommentsDTO"/>
+      	<typeAlias alias="commentReplies" type="com.spring.project.dto.post.CommentReplyDTO"/>
+	</typeAliases>
+
+	<typeHandlers>
+		<typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" javaType="java.time.LocalDateTime"/>
+	</typeHandlers>
+	
+	<!-- root-context.xml에 연동 된 DB작업 -->
+<!-- 	<environments default="development1">
+		<environment id="development1">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED" >
+				<property name="driver" 	      value="${jdbc.driver}"  />
+    	  	    <property name="url"              value="${jdbc.url}"/>
+      		    <property name="username"         value="${jdbc.username}" />
+       		    <property name="password"         value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments> -->
+	
+	
+	<!-- mybatis mapper생성 지점 -->
+	<mappers>
+		<mapper resource="mapper/user-mapper.xml" />
+		<mapper resource="mapper/product-mapper.xml" />
+		<mapper resource="mapper/cart-mapper.xml" />
+		<mapper resource="mapper/test-mapper.xml" />
+		<mapper resource="mapper/mypage-mapper.xml" />
+		<mapper resource="mapper/challenge-mapper.xml"/>
+		<mapper resource="mapper/post-mapper.xml"/>
+		<mapper resource="mapper/comment-mapper.xml"/>
+	</mappers>
+	
+</configuration>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="productRepository">
+   
+   <select id="getAllProductList" resultType="product">
+   		select * from Products
+   </select>
+   
+   <select id="getProductDetail" resultType="product">
+   		select * from Products where product_id = #{product_id}
+   </select>
+   
+   <insert id="registerProduct" parameterType="product">
+   		INSERT INTO Products (
+   			product_title, 
+   			stitle, 
+   			writer, 
+   			publisher, 
+   			content, 
+   			page, 
+   			price, 
+   			languages, 
+   			stock, 
+   			product_image
+   		) VALUES (
+   			#{product_title}, 
+   			#{stitle}, 
+   			#{writer}, 
+   			#{publisher}, 
+   			#{content}, 
+   			#{page}, 
+   			#{price}, 
+   			#{languages}, 
+   			#{stock}, 
+   			#{product_image}
+   		)
+   </insert>
+   
+   <update id="pointDeduction" parameterType="map">
+   		UPDATE USERS
+		SET point = point - #{totalAmount}
+		WHERE user_id = #{user_id};
+   </update>
+   
+   <select id="getpoint" parameterType="int" resultType="int">
+   		SELECT point FROM users where user_id = #{user_id}
+   </select>
+   
+   <delete id="deleteCart" parameterType="int">
+   		DELETE FROM CARTS WHERE user_id = #{user_id};
+   </delete>
+   
+   <select id="getProductById" parameterType="int" resultType="product">
+   		SELECT * FROM Products WHERE product_id = #{product_id}
+   </select>
+   
+   <delete id="deleteProduct" parameterType="int">
+   		DELETE FROM Products WHERE product_id = #{product_id}
+   </delete>
+   
+   <delete id="deleteCartItemsByProduct" parameterType="int">
+   		DELETE FROM CART_ITEMS WHERE product_id = #{product_id}
+   </delete>
+   
+</mapper>

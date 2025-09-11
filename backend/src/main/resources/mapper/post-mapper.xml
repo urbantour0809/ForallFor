@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="postRepository">
+
+    <!-- 전체 게시글 조회 -->
+    <select id="findAllPosts" resultType="post">
+        SELECT post_id, title, content, user_id, category_id, views, created_at
+        FROM posts
+        ORDER BY created_at DESC
+    </select>
+
+    <!-- 게시글 카테고리 전체 조회 -->
+    <select id="findAllCategories" resultType="postCategory">
+        SELECT category_id, name, color
+        FROM post_category
+        ORDER BY category_id ASC
+    </select>
+
+    <!-- user_id로 닉네임 조회 -->
+    <select id="findNicknameByUserId" resultType="string">
+        SELECT nickname FROM users WHERE user_id = #{user_id}
+    </select>
+
+    <!-- post_id로 게시글 1개 조회 -->
+    <select id="findPostById" resultType="post">
+        SELECT post_id, title, content, user_id, category_id, views, created_at
+        FROM posts WHERE post_id = #{post_id}
+    </select>
+
+    <!-- 게시글 조회수 증가 -->
+    <update id="increaseView" parameterType="int">
+        UPDATE posts
+        SET views = views + 1
+        WHERE post_id = #{post_id}
+    </update>
+
+    <!-- 기본 페이징 (필터X) -->
+    <select id="findPostsByPaging" resultType="post">
+        SELECT * FROM posts
+        ORDER BY created_at DESC
+            LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <!-- 전체 게시글 수 (필터X) -->
+    <select id="getTotalPostCount" resultType="int">
+        SELECT COUNT(*) FROM posts
+    </select>
+
+    <!-- 페이징 + 필터 (카테고리 or 검색어) -->
+    <select id="findPostsByPagingAndFilter" resultType="post">
+        SELECT *
+        FROM posts
+        <where>
+            <if test="category != null">
+                category_id = #{category}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (
+                title LIKE CONCAT('%', #{keyword}, '%')
+                OR content LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+        </where>
+        ORDER BY created_at DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <!-- 필터 + 검색 적용된 전체 게시글 개수 -->
+    <select id="getFilteredPostCount" resultType="int">
+        SELECT COUNT(*)
+        FROM posts
+        <where>
+            <if test="category != null">
+                category_id = #{category}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (
+                title LIKE CONCAT('%', #{keyword}, '%')
+                OR content LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+        </where>
+    </select>
+    <insert id="insertPost" parameterType="post">
+    	INSERT INTO posts (title, content, user_id, category_id)
+    	VALUES (#{title}, #{content}, #{user_id}, #{category_id})
+	</insert>
+	<update id="updatePost" parameterType="com.spring.project.dto.post.PostsDTO">
+    	UPDATE posts
+    	SET title = #{title},
+        	content = #{content},
+        	category_id = #{category_id}
+    	WHERE post_id = #{post_id}
+	</update>
+	<delete id="deletePost" parameterType="int">
+    	DELETE FROM posts
+    	WHERE post_id = #{post_id}
+	</delete>
+
+
+    <select id="findByDate" parameterType="string" resultType="post">
+        SELECT
+            post_id,
+            title,
+            content,
+            user_id,
+            category_id,
+            views,
+            created_at
+        FROM posts
+        WHERE DATE(created_at) = #{date}
+        ORDER BY created_at DESC;
+    </select>
+
+</mapper>

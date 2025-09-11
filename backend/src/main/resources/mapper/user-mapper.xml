@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userRepository">
+    <!-- 로그인 -->
+    <select id="login" resultType="user">
+        SELECT user_id, id, password, nickname, user_type, email, experience_points, grade_id, created_at, point
+        FROM users
+        WHERE id = #{id} AND password = #{password}
+    </select>
+
+    <!--소셜 로그인-->
+    <select id="findByLoginId" parameterType="string" resultType="user">
+        SELECT user_id, id, password, nickname, user_type, email, experience_points, grade_id, created_at, point
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+    <!-- 회원가입 -->
+    <insert id="singup" parameterType="user">
+        INSERT INTO users (id, password, nickname, email, user_type, experience_points, grade_id, created_at)
+        VALUES (#{id}, #{password}, #{nickname}, #{email}, #{user_type}, #{experience_points}, #{grade_id}, NOW())
+    </insert>
+
+
+    <!-- 아이디 중복 확인 -->
+    <select id="checkId" parameterType="user" resultType="int">
+        SELECT COUNT(*) FROM users WHERE id = #{id}
+    </select>
+
+    <!-- 닉네임 중복 확인 -->
+    <select id="checkNickname" parameterType="user" resultType="int">
+        SELECT COUNT(*) FROM users WHERE nickname = #{nickname}
+    </select>
+
+    <!-- 구글 로그인 - 이메일로 사용자 찾기 -->
+    <select id="findByUsername" resultType="user">
+        SELECT * FROM USERS WHERE email = #{username}
+    </select>
+
+    <!-- 이메일로 사용자 검색 (OAuth2용) -->
+    <select id="findByEmail" resultType="user">
+        SELECT * FROM USERS WHERE email = #{email}
+    </select>
+
+    <!-- 구글 로그인 - 사용자 등록 -->
+    <insert id="insertUser">
+        INSERT INTO USERS (username, password, nickname, user_type, experience_points, email)
+        VALUES (#{username}, #{password}, #{nickname}, #{user_type}, #{experience_points}, #{email})
+    </insert>
+
+
+</mapper>

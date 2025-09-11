@@ -1,0 +1,22 @@
+# Java 빌드
+/target/
+*.class
+
+# IDE 설정
+*.iml
+.idea/
+.project
+.classpath
+.settings/
+
+# 로그 파일
+*.log
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# 환경 설정 (민감 정보가 있을 경우)
+src/main/resources/application-local.properties
+src/main/resources/application-prod.properties
+/application.yml

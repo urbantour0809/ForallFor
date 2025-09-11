@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="testRepository">
+
+	<select id="getTestList" resultType="test">
+		select * from TESTS;
+	</select>
+	
+	<select id="getTestCatList" resultType="testCategory">
+		SELECT tc.name
+		FROM TESTS t
+		JOIN TEST_CATEGORY tc ON t.category_id = tc.category_id
+		ORDER BY t.test_id;
+	</select>
+	
+	<select id="getTestLevelList" resultType="testLevel">
+		SELECT 
+  		 tl.name AS name,
+ 		 tl.color AS color
+		FROM TESTS t
+		JOIN TEST_LEVELS tl ON t.level_id = tl.level_id
+		ORDER BY t.test_id;
+	</select>
+	
+	<select id="getTestWriterList" resultType="user">
+		SELECT u.nickname
+		FROM TESTS t
+		JOIN USERS u ON t.user_id = u.user_id
+		ORDER BY t.test_id;
+	</select>
+	
+	<insert id="insertTest" parameterType="test" useGeneratedKeys="true" keyProperty="test_id">
+  		INSERT INTO tests (title, content, level_id, category_id, user_id)
+  		VALUES (#{title}, #{content}, #{level_id}, #{category_id}, #{user_id})
+	</insert>
+	
+	<insert id="insertTestProblem" parameterType="testProblem">
+  		INSERT INTO test_problems (test_id, title, content, hint, correct)
+  		VALUES (#{test_id}, #{title}, #{content}, #{hint}, #{correct})
+	</insert>
+
+	<delete id="deleteTest" parameterType="int">
+		DELETE FROM tests
+		WHERE test_id = #{test_id}
+	</delete>	
+
+
+</mapper>

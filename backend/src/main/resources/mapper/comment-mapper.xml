@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commentRepository">
+
+    <!-- 댓글 수 전체 불러오기 -->
+    <select id="findcommentall" parameterType="int" resultType="comments">
+        SELECT comment_id, post_id, user_id, content, created_at
+        FROM comments
+        WHERE post_id = #{post_id}
+        ORDER BY created_at ASC
+    </select>
+
+    <!-- 댓글 개수 -->
+    <select id="countComments" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM comments WHERE post_id = #{post_id}
+    </select>
+
+    <!-- 댓글 등록 -->
+    <insert id="insertComment" parameterType="comments"
+            useGeneratedKeys="true" keyProperty="comment_id">
+        INSERT INTO comments (post_id, user_id, content)
+        VALUES (#{post_id}, #{user_id}, #{content})
+    </insert>
+
+    <!-- 댓글 삭제 할 수 있는 권한 체크 -->
+    <select id="findCommentById" parameterType="int" resultType="comments">
+        SELECT comment_id, post_id, user_id, content, created_at
+        FROM comments
+        WHERE comment_id = #{comment_id}
+    </select>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comments WHERE comment_id = #{comment_id}
+    </delete>
+
+    <!-- comment_id에 해당된 전체 대댓글 불러오기 -->
+    <select id="findRepliesByCommentId" parameterType="int" resultType="commentReplies">
+        SELECT reply_id       AS reply_id,
+               comment_id     AS comment_id,
+               user_id        AS user_id,
+               content,
+               created_at     AS createdAt
+        FROM commentreply
+        WHERE comment_id = #{comment_id}
+        ORDER BY created_at ASC
+    </select>
+
+    <!-- 대댓글 insert-->
+    <insert id="insertReply" parameterType="commentReplies" useGeneratedKeys="true" keyProperty="reply_id">
+        INSERT INTO commentreply (
+            comment_id,
+            user_id,
+            content
+        )
+        VALUES (
+                   #{comment_id},
+                   #{user_id},
+                   #{content}
+               )
+    </insert>
+
+    <!-- 대댓글 삭제 할 수 있는 권한 체크 -->
+    <select id="findReplyById" parameterType="int" resultType="commentReplies">
+        SELECT reply_id, comment_id, user_id, content, created_at AS createdAt
+        FROM commentreply
+        WHERE reply_id = #{reply_id}
+    </select>
+
+    <!-- 대댓글 삭제 -->
+    <delete id="deleteReply" parameterType="int">
+        DELETE FROM commentreply WHERE reply_id = #{reply_id}
+    </delete>
+
+    <select id="findRepliesByPostId" parameterType="int" resultType="commentReplies">
+        SELECT r.reply_id   AS reply_id,
+               r.comment_id AS comment_id,
+               r.user_id    AS user_id,
+               r.content,
+               r.created_at AS createdAt
+        FROM commentreply r
+                 JOIN comments c ON c.comment_id = r.comment_id
+        WHERE c.post_id = #{post_id}
+        ORDER BY r.created_at ASC
+    </select>
+
+    <!--이 post에 참여한 사용자(UserDTO) 전체 (닉네임 맵용)-->
+    <select id="findUsersForPost" parameterType="int" resultType="user">
+        SELECT DISTINCT
+            u.user_id, u.id, u.nickname, u.user_type, u.grade_id,
+            u.experience_points, u.created_at, u.email, u.point
+        FROM users u
+        WHERE u.user_id IN (
+            SELECT c.user_id
+            FROM comments c
+            WHERE c.post_id = #{value}
+            UNION
+            SELECT r.user_id
+            FROM commentreply r
+                     JOIN comments c2 ON c2.comment_id = r.comment_id
+            WHERE c2.post_id = #{value}
+        )
+    </select>
+</mapper>

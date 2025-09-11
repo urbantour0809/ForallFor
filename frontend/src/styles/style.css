@@ -1,0 +1,1994 @@
+/* ================================
+   글로벌 CSS 변수 및 테마 설정
+   ================================ */
+
+/* ================================
+   브라우저 기본 비밀번호 표시 아이콘 제거
+   ================================ */
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button:hover,
+input[type="password"]::-webkit-credentials-auto-fill-button:active {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Chrome/Safari에서 비밀번호 표시 아이콘 제거 */
+input[type="password"]::-webkit-outer-spin-button,
+input[type="password"]::-webkit-inner-spin-button,
+input[type="password"]::-webkit-search-cancel-button,
+input[type="password"]::-webkit-search-decoration,
+input[type="password"]::-webkit-search-results-button,
+input[type="password"]::-webkit-search-results-decoration {
+  display: none !important;
+}
+
+/* IE/Edge에서 비밀번호 표시 아이콘 제거 */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+}
+
+/* Firefox에서 비밀번호 표시 아이콘 제거 */
+input[type="password"]::-moz-search-cancel-button {
+  display: none !important;
+}
+
+:root {
+  /* 기본 색상 변수 */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-sidebar: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-sidebar: #ffffff;
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --border-color: rgba(148, 163, 184, 0.2);
+  
+  /* 드롭다운 전용 테마 변수 */
+  --dropdown-bg: rgba(30, 41, 59, 0.98);
+  --dropdown-border: rgba(102, 126, 234, 0.4);
+  --dropdown-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --dropdown-backdrop-filter: blur(24px);
+  --dropdown-item-hover-bg: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(102, 126, 234, 0.08) 100%);
+  --dropdown-item-hover-shadow: 0 4px 12px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(102, 126, 234, 0.2);
+  --dropdown-item-hover-color: #ffffff;
+  --dropdown-border-accent: linear-gradient(180deg, rgba(102, 126, 234, 1) 0%, rgba(102, 126, 234, 0.6) 100%);
+  --dropdown-ripple-bg: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+  --dropdown-parent-hover-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+[data-theme="dark"] {
+  /* 다크 테마 */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-sidebar: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-sidebar: #ffffff;
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --border-color: rgba(148, 163, 184, 0.2);
+  
+  /* 다크 테마 드롭다운 색상 */
+  --dropdown-bg: rgba(30, 41, 59, 0.98);
+  --dropdown-border: rgba(102, 126, 234, 0.4);
+  --dropdown-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --dropdown-backdrop-filter: blur(24px);
+  --dropdown-item-hover-bg: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(102, 126, 234, 0.08) 100%);
+  --dropdown-item-hover-shadow: 0 4px 12px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(102, 126, 234, 0.2);
+  --dropdown-item-hover-color: #ffffff;
+  --dropdown-border-accent: linear-gradient(180deg, rgba(102, 126, 234, 1) 0%, rgba(102, 126, 234, 0.6) 100%);
+  --dropdown-ripple-bg: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+  --dropdown-parent-hover-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+[data-theme="light"] {
+  /* 라이트 테마 */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-sidebar: #f1f5f9;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-sidebar: #1f2937;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(209, 213, 219, 0.6);
+  
+  /* 라이트 테마 드롭다운 색상 */
+  --dropdown-bg: rgba(255, 255, 255, 0.98);
+  --dropdown-border: rgba(102, 126, 234, 0.2);
+  --dropdown-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.03);
+  --dropdown-backdrop-filter: blur(24px);
+  --dropdown-item-hover-bg: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(102, 126, 234, 0.05) 100%);
+  --dropdown-item-hover-shadow: 0 4px 12px rgba(102, 126, 234, 0.1), inset 0 1px 0 rgba(102, 126, 234, 0.15);
+  --dropdown-item-hover-color: #1f2937;
+  --dropdown-border-accent: linear-gradient(180deg, rgba(102, 126, 234, 0.8) 0%, rgba(102, 126, 234, 0.4) 100%);
+  --dropdown-ripple-bg: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+  --dropdown-parent-hover-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+}
+
+/* ================================
+   글래스모피즘 효과
+   ================================ */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.glass-dark {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+}
+
+/* ================================
+   텍스트 및 그라디언트 효과
+   ================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.hero-title {
+  line-height: 1.2;
+  padding: 0.5rem 0;
+  overflow: visible;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================
+   3D 및 플로팅 카드 효과
+   ================================ */
+.floating-card {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.floating-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px);
+}
+
+/* ================================
+   커서 글로우 효과
+   ================================ */
+.cursor-glow {
+  position: relative;
+}
+
+.cursor-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.cursor-glow:hover::before {
+  opacity: 1;
+}
+
+/* ================================
+   네비게이션 스타일
+   ================================ */
+.nav-link {
+  position: relative;
+  padding: 0.5rem 1rem;  /* 패딩 축소 */
+  border-radius: 0.5rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  white-space: nowrap;  /* 텍스트 줄바꿈 방지 */
+  margin: 0 0.125rem;   /* 메뉴 간 여백 축소 */
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.nav-link.active {
+  background: var(--glass-bg);
+  color: #667eea;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  border: 1px solid rgba(102, 126, 234, 0.4);
+}
+
+/* 드롭다운 메뉴 스타일 */
+.mypage-dropdown-container .dropdown-menu {
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.mypage-dropdown-container .dropdown-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mypage-dropdown-container .dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.8);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.mypage-dropdown-container .dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: rgba(102, 126, 234, 0.8);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.mypage-dropdown-container .dropdown-item:hover::before {
+  transform: scaleY(1);
+}
+
+/* Challenges 드롭다운 스타일 - 즉시 반응하는 부드러운 애니메이션 */
+.challenges-dropdown-container .dropdown-menu {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top center;
+  border-radius: 12px;
+  backdrop-filter: var(--dropdown-backdrop-filter);
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  box-shadow: var(--dropdown-shadow);
+}
+
+.challenges-dropdown-container:hover .dropdown-menu,
+.challenges-dropdown-container .dropdown-menu.show {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.challenges-dropdown-container .dropdown-item {
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin: 2px 4px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  /* 레이아웃 변경을 방지하기 위해 transform 제거 */
+  will-change: background-color, box-shadow;
+}
+
+.challenges-dropdown-container .dropdown-item:hover {
+  background: var(--dropdown-item-hover-bg);
+  box-shadow: var(--dropdown-item-hover-shadow);
+  color: var(--dropdown-item-hover-color);
+  /* transform 제거로 레이아웃 시프트 방지 */
+}
+
+/* 세련된 왼쪽 border 효과 - 레이아웃에 영향 없음 */
+.challenges-dropdown-container .dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: var(--dropdown-border-accent);
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 4px 4px 0;
+}
+
+.challenges-dropdown-container .dropdown-item:hover::before {
+  width: 3px;
+}
+
+/* 부드러운 ripple 효과 - 더 빠르게 */
+.challenges-dropdown-container .dropdown-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--dropdown-ripple-bg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.challenges-dropdown-container .dropdown-item:hover::after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+/* MyPage 드롭다운 스타일 개선 - 즉시 반응하는 부드러운 애니메이션 */
+.mypage-dropdown-container .dropdown-menu {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top center;
+  border-radius: 12px;
+  backdrop-filter: var(--dropdown-backdrop-filter);
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  box-shadow: var(--dropdown-shadow);
+}
+
+.mypage-dropdown-container:hover .dropdown-menu,
+.mypage-dropdown-container .dropdown-menu.show {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mypage-dropdown-container .dropdown-item {
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin: 2px 4px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  /* 레이아웃 변경을 방지하기 위해 transform 제거 */
+  will-change: background-color, box-shadow;
+}
+
+.mypage-dropdown-container .dropdown-item:hover {
+  background: var(--dropdown-item-hover-bg);
+  box-shadow: var(--dropdown-item-hover-shadow);
+  color: var(--dropdown-item-hover-color);
+  /* transform 제거로 레이아웃 시프트 방지 */
+}
+
+/* 세련된 왼쪽 border 효과 - 레이아웃에 영향 없음 */
+.mypage-dropdown-container .dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: var(--dropdown-border-accent);
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 4px 4px 0;
+}
+
+.mypage-dropdown-container .dropdown-item:hover::before {
+  width: 3px;
+}
+
+/* 부드러운 ripple 효과 - 더 빠르게 */
+.mypage-dropdown-container .dropdown-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--dropdown-ripple-bg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.mypage-dropdown-container .dropdown-item:hover::after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+/* 고급 드롭다운 컨테이너 효과 */
+.challenges-dropdown-container,
+.mypage-dropdown-container {
+  position: relative;
+}
+
+/* 드롭다운 열림 시 부모 메뉴 아이템 강조 효과 - 더 빠르게 */
+.challenges-dropdown-container:hover > a > span,
+.mypage-dropdown-container:hover > a > span {
+  color: #667eea !important;
+  text-shadow: var(--dropdown-parent-hover-shadow);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 레거시 스타일 제거 - 새로운 CSS 변수 기반 시스템으로 대체됨 */
+/* 기존 하드코딩된 드롭다운 접근성 개선 및 다크/라이트 테마 지원 코드 제거 */
+
+/* 클래스 기반 드롭다운 스타일 - JavaScript에서 사용 */
+.challenges-dropdown-menu,
+.mypage-dropdown-menu {
+  background: var(--dropdown-bg) !important;
+  backdrop-filter: var(--dropdown-backdrop-filter) !important;
+  border: 1px solid var(--dropdown-border) !important;
+  box-shadow: var(--dropdown-shadow) !important;
+  border-radius: 12px !important;
+}
+
+.challenges-dropdown-item,
+.mypage-dropdown-item {
+  color: var(--text-secondary) !important;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.challenges-dropdown-item:hover,
+.mypage-dropdown-item:hover {
+  background: var(--dropdown-item-hover-bg) !important;
+  box-shadow: var(--dropdown-item-hover-shadow) !important;
+  color: var(--dropdown-item-hover-color) !important;
+}
+
+/* 테마 전환 애니메이션 개선 - 즉시 반응 */
+.challenges-dropdown-container,
+.mypage-dropdown-container,
+.challenges-dropdown-menu,
+.mypage-dropdown-menu,
+.challenges-dropdown-item,
+.mypage-dropdown-item {
+  transition: all 0.05s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+/* 네비게이션 그리드 개선 - 반응형 레이아웃 최적화 */
+.navigation-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) 2fr minmax(300px, 1fr);
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+}
+
+/* 로고 영역 - 자동 크기 조정 */
+.navigation-grid > div:nth-child(1) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* 중앙 메뉴 영역 - 유연한 크기 조정 */
+.navigation-grid > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* 로그인, 회원가입 버튼 영역 - 자동 크기 조정 */
+.navigation-grid > div:nth-child(3) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 4rem;
+  min-width: 320px;
+  flex-shrink: 1;
+}
+
+/* 모바일에서의 그리드 조정 */
+@media (max-width: 767px) {
+  .navigation-grid {
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+  }
+  
+  /* 모바일에서는 중앙 메뉴 숨김 */
+  .navigation-grid > div:nth-child(2) {
+    display: none;
+  }
+  
+  .navigation-grid > div:nth-child(1) {
+    justify-content: flex-start;
+  }
+  
+  .navigation-grid > div:nth-child(3) {
+    justify-content: flex-end;
+  }
+}
+
+
+
+
+/* 데스크톱에서의 조정 */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .navigation-grid {
+    gap: 1rem;
+  }
+  
+  .navigation-grid > div:nth-child(2) {
+    margin: 0 1rem;
+  }
+}
+
+/* 대형 화면에서의 조정 */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .navigation-grid {
+    gap: 2rem;
+  }
+  
+  .navigation-grid > div:nth-child(2) {
+    margin: 0 1.5rem;
+  }
+}
+
+/* 초대형 화면에서의 조정 */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.875rem;
+    margin: 0 0.25rem;
+  }
+}
+
+
+
+/* 네비게이션 컨테이너 반응형 스타일 */
+@media (max-width: 767px) {
+  /* 모바일에서 네비게이션 컨테이너 패딩 조정 */
+  .max-w-6xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  
+  
+  .navigation-grid > div:nth-child(1) img {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  /* 모바일에서 드롭다운 메뉴 조정 */
+  .mypage-dropdown-container .dropdown-menu {
+    width: 12rem;
+    right: 0;
+    left: auto;
+  }
+}
+
+
+/* 데스크톱에서의 최적화 */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .max-w-6xl {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  
+  .navigation-grid > div:nth-child(2) nav {
+    gap: 0.75rem;
+  }
+}
+
+
+/* ================================
+   언어 카드 스타일
+   ================================ */
+.language-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.language-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.language-card:hover::before {
+  transform: translateX(100%);
+}
+
+.language-logo {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.language-card:hover .language-logo {
+  transform: scale(1.1) rotateY(15deg);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+/* ================================
+   피처 카드 스타일
+   ================================ */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-icon-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+}
+
+/* ================================
+   버튼 스타일
+   ================================ */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-color);
+  transform: translateY(-1px);
+}
+
+/* ================================
+   테마 토글 버튼
+   ================================ */
+.theme-toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.theme-toggle:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* ================================
+   배경 애니메이션
+   ================================ */
+.background-orb {
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.7;
+  animation: float 6s ease-in-out infinite;
+}
+
+.background-orb:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.background-orb:nth-child(3) {
+  animation-delay: -4s;
+}
+
+/* ================================
+   스크롤 애니메이션 클래스
+   ================================ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-up.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-left.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-right.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================================
+   반응형 디자인
+   ================================ */
+@media (max-width: 768px) {
+  .floating-card:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-5px);
+  }
+  
+  .language-logo {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  
+  .hero-text {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  /* 모바일 네비게이션 최적화 */
+  .nav-link {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-effect {
+    backdrop-filter: blur(10px);
+  }
+  
+  .floating-card {
+    padding: 1rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  /* 모바일 소형 화면 네비게이션 */
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 0.375rem 0.75rem;
+    margin: 0 0.125rem;
+  }
+}
+
+/* 오른쪽 버튼 영역 반응형 최적화 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navigation-grid > div:nth-child(3) button:not(.theme-toggle) {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .navigation-grid > div:nth-child(3) .theme-toggle {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .navigation-grid > div:nth-child(3) button:not(.theme-toggle) {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .navigation-grid > div:nth-child(3) .theme-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .navigation-grid > div:nth-child(3) button:not(.theme-toggle) {
+    padding: 0.5rem 1.125rem;
+    font-size: 0.95rem;
+  }
+  
+  .navigation-grid > div:nth-child(3) .theme-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .navigation-grid > div:nth-child(3) button:not(.theme-toggle) {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .navigation-grid > div:nth-child(3) .theme-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+/* ================================
+   다크모드 추가 스타일
+   ================================ */
+[data-theme="dark"] .language-logo {
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.1));
+}
+
+[data-theme="dark"] .language-card:hover .language-logo {
+  filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.2));
+}
+
+[data-theme="light"] .floating-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .floating-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 드롭다운 메뉴 테마별 스타일 */
+[data-theme="dark"] .mypage-dropdown-container .dropdown-menu {
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .mypage-dropdown-container .dropdown-menu {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .mypage-dropdown-container .dropdown-item {
+  color: #d1d5db;
+}
+
+[data-theme="light"] .mypage-dropdown-container .dropdown-item {
+  color: #374151;
+}
+
+[data-theme="dark"] .mypage-dropdown-container .dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.8);
+  box-shadow: 0 0 25px rgba(102, 126, 234, 0.7);
+  color: #ffffff;
+}
+
+[data-theme="light"] .mypage-dropdown-container .dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.9);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  color: #ffffff;
+}
+
+/* ================================
+   관리자 페이지 이동 버튼
+   ================================ */
+.admin-page-fab {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-page-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #667eea, #38bdf8);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.admin-page-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(56,189,248,0.15);
+}
+
+.user-page-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.user-page-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(16,185,129,0.15);
+}
+
+.company-page-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.company-page-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(245,158,11,0.15);
+}
+
+/* ================================
+   관리자 사이드바 네비게이션 스타일
+   ================================ */
+.admin-nav-link {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem;
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+.admin-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+.admin-nav-link.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 24px rgba(102, 126, 234, 0.18);
+  border-left: 4px solid #667eea;
+}
+
+/* ================================
+   사용자 페이지 네비게이션 스타일
+   ================================ */
+.user-nav-link {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.user-nav-link.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+  transform: translateX(4px);
+}
+
+/* ================================
+   기업 페이지 네비게이션 스타일
+   ================================ */
+.company-nav-link {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem;
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.company-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.company-nav-link.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+  transform: translateX(4px);
+  
+}
+
+/* ================================
+   관리자 테이블 스타일
+   ================================ */
+.admin-table th {
+  text-align: left;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom: 1px solid #e5e7eb;
+}
+.admin-table td {
+  text-align: center;
+  padding: 0.6rem 1rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ================================
+   관리자 통계 카드 스타일
+   ================================ */
+.stat-card {
+  background: var(--glass-bg);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(56,189,248,0.06);
+  transition: all 0.18s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+  cursor: pointer;
+}
+.stat-card:hover, .stat-card:focus {
+  background: linear-gradient(120deg, #e0f2fe 0%, #f0fdfa 100%);
+  box-shadow: 0 8px 32px rgba(56,189,248,0.18);
+  transform: translateY(-4px) scale(1.04);
+  outline: none;
+}
+.stat-icon-bg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+  box-shadow: 0 2px 8px rgba(56,189,248,0.10);
+  transition: background 0.18s, box-shadow 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem auto;
+}
+.stat-card:hover .stat-icon-bg {
+  background: linear-gradient(135deg, #f472b6 0%, #38bdf8 100%);
+  box-shadow: 0 4px 16px rgba(236,72,153,0.12);
+}
+.stat-icon {
+  color: #fff;
+  font-size: 1.7rem;
+}
+.stat-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ================================
+   성능 최적화
+   ================================ */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.optimize-animation {
+  will-change: transform, opacity;
+}
+
+.optimize-animation:not(:hover) {
+  will-change: auto;
+}
+
+[data-theme="dark"] .stat-card:hover, [data-theme="dark"] .stat-card:focus {
+  background: linear-gradient(120deg, #1e293b 0%, #334155 100%);
+  box-shadow: 0 8px 32px rgba(56,189,248,0.22);
+}
+[data-theme="dark"] .stat-card:hover .stat-label {
+  color: #38bdf8;
+}
+[data-theme="dark"] .stat-card:hover .stat-value {
+  color: #0ea5e9;
+}
+[data-theme="dark"] .stat-card:hover .stat-icon-bg {
+  background: linear-gradient(135deg, #0ea5e9 0%, #a78bfa 100%);
+}
+
+
+/* ================================
+   페이지 레이아웃 및 여백 시스템
+   ================================ */
+
+/* 표준 페이지 레이아웃 - 네비게이션 바와 적절한 여백 */
+.page-layout {
+  min-height: 100vh;
+  padding-top: 8rem; /* 128px - 기존 6rem(96px)에서 증가 */
+  padding-bottom: 5rem; /* 80px */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.page-layout-relative {
+  position: relative;
+}
+
+/* 페이지 헤더 여백 개선 */
+.page-header {
+  margin-bottom: 4rem; /* 64px */
+  text-align: center;
+}
+
+.page-title {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: bold;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* ================================
+   사이드바 네비게이션 스타일
+   ================================ */
+
+/* 사이드바 컨테이너 - 여백 개선 */
+.sidebar-nav {
+  width: 240px;
+  background: var(--bg-sidebar) !important;
+  color: var(--text-sidebar) !important;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  padding-top: 8rem; /* 128px - 다른 페이지와 일관성 맞춤 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-right: 1px solid var(--border-color);
+}
+
+/* 사이드바 제목 - 추가 여백 */
+.sidebar-title {
+  margin-bottom: 2rem;
+  margin-top: 1rem; /* 네비게이션 바와 추가 여백 */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text-sidebar) !important;
+}
+
+/* 사이드바 메뉴 리스트 */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* MyPage 컨테이너 레이아웃 */
+.mypage-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-primary) !important;
+}
+
+/* MyPage 메인 콘텐츠 - 여백 개선 */
+.mypage-main-content {
+  flex: 1;
+  background: var(--bg-primary) !important;
+  padding-top: 8rem; /* 128px - 다른 페이지와 일관성 맞춤 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* MyPage 헤더 추가 여백 */
+.mypage-header {
+  margin-top: 1rem; /* 네비게이션 바와 추가 여백 */
+  margin-bottom: 3rem;
+}
+
+
+
+/* ================================
+   반응형 페이지 여백 시스템
+   ================================ */
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .page-layout {
+    padding-top: 6rem; /* 96px - 모바일에서는 조금 줄임 */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .page-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .sidebar-nav {
+    width: 200px;
+    padding: 1.5rem 0.75rem;
+    padding-top: 6rem; /* 96px - 모바일에서는 조금 줄임 */
+  }
+  
+  .sidebar-title {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .mypage-main-content {
+    padding-top: 6rem; /* 96px - 모바일에서는 조금 줄임 */
+  }
+  
+  .mypage-header {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .page-layout {
+    padding-top: 7rem; /* 112px */
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .sidebar-nav {
+    padding-top: 7rem; /* 112px */
+  }
+  
+  .mypage-main-content {
+    padding-top: 7rem; /* 112px */
+  }
+  
+  .mypage-header {
+    margin-top: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* 데스크톱 */
+@media (min-width: 1025px) {
+  .page-layout {
+    padding-top: 8rem; /* 128px */
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  .sidebar-nav {
+    padding-top: 8rem; /* 128px */
+  }
+  
+  .mypage-main-content {
+    padding-top: 8rem; /* 128px */
+  }
+  
+  .mypage-header {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+}
+
+/* 대형 화면 */
+@media (min-width: 1440px) {
+  .page-layout {
+    padding-top: 9rem; /* 144px */
+  }
+  
+  .sidebar-nav {
+    padding-top: 9rem; /* 144px */
+  }
+  
+  .mypage-main-content {
+    padding-top: 9rem; /* 144px */
+  }
+  
+  .mypage-header {
+    margin-top: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+}
+
+/* ============================================================================
+   테스트 관련 스타일 (TestDescription, TestSolver)
+   ============================================================================ */
+
+/* 테스트 네비게이션 컨테이너 */
+.test-navigation {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+}
+
+/* 문제 버튼 기본 스타일 */
+.problem-btn {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 3rem;
+  min-height: 3rem;
+}
+
+.problem-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.problem-btn:hover::before {
+  opacity: 1;
+}
+
+/* 문제 상태별 스타일 */
+.problem-btn.pending {
+  background: rgba(107, 114, 128, 0.2);
+  border-color: rgba(107, 114, 128, 0.4);
+  color: rgba(107, 114, 128, 1);
+}
+
+.problem-btn.passed {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: rgba(34, 197, 94, 1);
+}
+
+.problem-btn.failed {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: rgba(239, 68, 68, 1);
+}
+
+.problem-btn.active {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+  color: rgba(59, 130, 246, 1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* 진행률 바 */
+.progress-bar {
+  background: linear-gradient(90deg, 
+    rgba(59, 130, 246, 0.8) 0%, 
+    rgba(99, 102, 241, 0.8) 50%, 
+    rgba(139, 92, 246, 0.8) 100%);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* 테스트 결과 애니메이션 */
+.test-result-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.test-result-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.test-result-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.test-result-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 문제 전환 애니메이션 */
+.problem-transition-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.problem-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.problem-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.problem-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   테스트 관련 반응형 디자인
+   ============================================================================ */
+
+/* 패널 크기별 반응형 스타일 */
+.test-navigation {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.problem-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width, height, font-size;
+  aspect-ratio: 1; /* Ensure square buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 문제 버튼 내부 요소들의 부드러운 전환 */
+.problem-btn span,
+.problem-btn div {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block; /* Ensure span is block for line-height */
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1; /* Adjust line height for better vertical centering */
+}
+
+/* 화살표 버튼의 부드러운 전환 */
+.test-navigation button[aria-label="이전 문제"],
+.test-navigation button[aria-label="다음 문제"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  aspect-ratio: 1; /* Ensure square buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Ensure arrows don't shrink */
+}
+
+/* 진행률 바의 부드러운 전환 */
+.test-navigation .bg-blue-500 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 매우 좁은 패널 (≤280px) */
+.test-navigation.compact-mode {
+  padding: 0.5rem;
+}
+
+.test-navigation.compact-mode .problem-btn {
+  min-width: 1.75rem; /* 28px */
+  max-width: 2.25rem; /* 36px */
+}
+
+.test-navigation.compact-mode .problem-btn span {
+  font-size: 0.5rem; /* 8px */
+  padding-top: 0.15em; /* 작은 버튼에서는 더 많은 상단 여백 */
+}
+
+.test-navigation.compact-mode button[aria-label="이전 문제"],
+.test-navigation.compact-mode button[aria-label="다음 문제"] {
+  padding: 0.25rem;
+  min-width: 1.25rem; /* 20px */
+  max-width: 1.75rem; /* 28px */
+}
+
+.test-navigation.compact-mode button[aria-label="이전 문제"] svg,
+.test-navigation.compact-mode button[aria-label="다음 문제"] svg {
+  font-size: 0.625rem; /* 10px */
+}
+
+/* 좁은 패널 (280px~320px) */
+.test-navigation.narrow-mode {
+  padding: 0.75rem;
+}
+
+.test-navigation.narrow-mode .problem-btn {
+  min-width: 2.25rem; /* 36px */
+  max-width: 2.75rem; /* 44px */
+}
+
+.test-navigation.narrow-mode .problem-btn span {
+  font-size: 0.625rem; /* 10px */
+  padding-top: 0.12em; /* 중간 크기 버튼에서 적절한 상단 여백 */
+}
+
+.test-navigation.narrow-mode button[aria-label="이전 문제"],
+.test-navigation.narrow-mode button[aria-label="다음 문제"] {
+  padding: 0.375rem;
+  min-width: 1.5rem; /* 24px */
+  max-width: 2rem; /* 32px */
+}
+
+.test-navigation.narrow-mode button[aria-label="이전 문제"] svg,
+.test-navigation.narrow-mode button[aria-label="다음 문제"] svg {
+  font-size: 0.75rem; /* 12px */
+}
+
+/* 중간 패널 (320px~420px) */
+.test-navigation.medium-mode {
+  padding: 0.875rem;
+}
+
+.test-navigation.medium-mode .problem-btn {
+  min-width: 2.5rem; /* 40px */
+  max-width: 3.25rem; /* 52px */
+}
+
+.test-navigation.medium-mode .problem-btn span {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.2;
+  padding-top: 0.1em; /* 중간 크기 버튼에서 적절한 상단 여백 */
+}
+
+.test-navigation.medium-mode button[aria-label="이전 문제"],
+.test-navigation.medium-mode button[aria-label="다음 문제"] {
+  padding: 0.5rem; /* 8px */
+  min-width: 1.75rem; /* 28px */
+  min-height: 1.75rem;
+  max-width: 2.25rem; /* 36px */
+  max-height: 2.25rem;
+}
+
+.test-navigation.medium-mode button[aria-label="이전 문제"] svg,
+.test-navigation.medium-mode button[aria-label="다음 문제"] svg {
+  font-size: 0.875rem; /* 14px */
+}
+
+/* 넓은 패널 (≥420px) */
+.test-navigation.wide-mode {
+  padding: 1rem;
+}
+
+.test-navigation.wide-mode .problem-btn {
+  min-width: 2.75rem; /* 44px */
+  min-height: 2.75rem;
+  max-width: 3.5rem; /* 56px */
+  max-height: 3.5rem;
+}
+
+.test-navigation.wide-mode .problem-btn span {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.2;
+  padding-top: 0.08em; /* 큰 버튼에서 적절한 상단 여백 */
+}
+
+.test-navigation.wide-mode button[aria-label="이전 문제"],
+.test-navigation.wide-mode button[aria-label="다음 문제"] {
+  padding: 0.5rem; /* 8px */
+  min-width: 2rem; /* 32px */
+  min-height: 2rem;
+  max-width: 2.5rem; /* 40px */
+  max-height: 2.5rem;
+}
+
+.test-navigation.wide-mode button[aria-label="이전 문제"] svg,
+.test-navigation.wide-mode button[aria-label="다음 문제"] svg {
+  font-size: 1rem; /* 16px */
+}
+
+/* 문제 버튼 컨테이너의 유연한 레이아웃 */
+.test-navigation .flex.items-center {
+  flex-wrap: nowrap;
+  overflow: hidden;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+/* 문제 버튼들을 감싸는 div */
+.test-navigation .flex.items-center > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* 280px~499px 범위에서의 특별한 최적화 */
+@media (min-width: 280px) and (max-width: 499px) {
+  .test-navigation {
+    overflow: hidden;
+  }
+  
+  .test-navigation .flex.items-center {
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.25rem;
+  }
+  
+  .test-navigation .flex.items-center > div {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+  
+  /* 문제 버튼 크기 최적화 */
+  .test-navigation .problem-btn {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  /* 화살표 버튼 크기 최적화 */
+  .test-navigation button[aria-label="이전 문제"],
+  .test-navigation button[aria-label="다음 문제"] {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+}
+
+/* 문제 버튼 컨테이너의 유연한 레이아웃 */
+.test-navigation .flex.items-center {
+  flex-wrap: nowrap;
+  overflow: hidden;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+/* 문제 버튼들을 감싸는 div */
+.test-navigation .flex.items-center > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* 문제 버튼 내부 텍스트 최적화 */
+.problem-btn span {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.2; /* 숫자와 위쪽 테두리 간격 조정 */
+  padding-top: 0.1em; /* 숫자 위쪽에 추가 여백 */
+}
+
+.problem-btn div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 화살표 버튼 내부 아이콘 최적화 */
+.test-navigation button[aria-label="이전 문제"] svg,
+.test-navigation button[aria-label="다음 문제"] svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+/* 모바일 (< 768px) - 기존 스타일 보완 */
+@media (max-width: 767px) {
+  .test-navigation {
+    padding: 0.75rem;
+  }
+  
+  /* 진행률 표시 간소화 */
+  .test-navigation .mt-3 {
+    margin-top: 0.5rem;
+  }
+  
+  /* 문제 제목 폰트 크기 조정 */
+  .test-navigation + div h1 {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+/* 태블릿 (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .test-navigation {
+    padding: 1rem;
+  }
+}
+
+/* 데스크톱 (1024px+) */
+@media (min-width: 1024px) {
+  .test-navigation {
+    padding: 1.25rem;
+  }
+  
+  /* 문제 버튼에 호버 효과 강화 */
+  .problem-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 좌/우 화살표 버튼 */
+  .test-navigation button[aria-label="이전 문제"],
+  .test-navigation button[aria-label="다음 문제"] {
+    padding: 0.75rem;
+    transition: all 0.2s ease;
+  }
+  
+  .test-navigation button[aria-label="이전 문제"]:hover,
+  .test-navigation button[aria-label="다음 문제"]:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: scale(1.05);
+  }
+}
+
+/* 대형 화면 (1440px+) */
+@media (min-width: 1440px) {
+  .test-navigation {
+    padding: 1.5rem;
+  }
+}
+
+/* ============================================================================
+   테스트 상태 인디케이터
+   ============================================================================ */
+
+/* 문제 상태 아이콘 애니메이션 */
+.problem-status-icon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.problem-btn:hover .problem-status-icon {
+  transform: scale(1.1);
+}
+
+/* 통과 상태 애니메이션 */
+.problem-btn.passed .problem-status-icon {
+  animation: successPulse 2s infinite;
+}
+
+@keyframes successPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* 실패 상태 애니메이션 */
+.problem-btn.failed .problem-status-icon {
+  animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+/* 활성 상태 글로우 효과 */
+.problem-btn.active {
+  animation: activeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes activeGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* ============================================================================
+   다크/라이트 테마 지원
+   ============================================================================ */
+
+[data-theme="dark"] .test-navigation {
+  background: rgba(17, 24, 39, 0.8);
+  border-color: rgba(75, 85, 99, 0.3);
+}
+
+[data-theme="dark"] .problem-btn {
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .problem-btn.pending {
+  background: rgba(75, 85, 99, 0.2);
+  border-color: rgba(75, 85, 99, 0.4);
+  color: rgba(156, 163, 175, 1);
+}
+
+[data-theme="light"] .test-navigation {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(229, 231, 235, 0.6);
+}
+
+[data-theme="light"] .problem-btn {
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .problem-btn.pending {
+  background: rgba(156, 163, 175, 0.15);
+  border-color: rgba(156, 163, 175, 0.3);
+  color: rgba(75, 85, 99, 1);
+}
+
+/* ============================================================================
+   접근성 개선
+   ============================================================================ */
+
+/* 키보드 포커스 지원 */
+.problem-btn:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.8);
+  outline-offset: 2px;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .problem-btn {
+    border-width: 2px;
+  }
+  
+  .problem-btn.passed {
+    background: rgba(34, 197, 94, 0.3);
+    border-color: rgba(34, 197, 94, 0.8);
+  }
+  
+  .problem-btn.failed {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.8);
+  }
+}
+
+/* 애니메이션 감소 모드 */
+@media (prefers-reduced-motion: reduce) {
+  .problem-btn,
+  .test-navigation,
+  .problem-status-icon {
+    transition: none;
+    animation: none;
+  }
+  
+  .problem-btn.active {
+    animation: none;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* ============================================================================
+   모바일 터치 최적화
+   ============================================================================ */
+
+/* 터치 대상 크기 최적화 */
+@media (max-width: 767px) {
+  .problem-btn {
+    min-height: 44px; /* iOS 권장 최소 터치 대상 크기 */
+    min-width: 44px;
+  }
+  
+  .test-navigation button[aria-label="이전 문제"],
+  .test-navigation button[aria-label="다음 문제"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* 터치 피드백 */
+.problem-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* 스와이프 인디케이터 (모바일) */
+@media (max-width: 767px) {
+  .test-navigation .flex.items-center.space-x-2::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+    pointer-events: none;
+  }
+}
+
