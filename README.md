@@ -31,10 +31,16 @@
 
 ---
 
-## 🛠 기술 스택
-`Python` · `Java` · `Spring Framework` · `MyBatis` · `Maven` · `Tomcat`  
-`React` · `JavaScript` · `MySQL` · `FastAPI` · `Linux` · `Anaconda`  
-`LLM (Exaone 3.5)`
+## ⚙️ 기술 스택
+
+| 영역 | 기술 |
+|------|------|
+| **Backend** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Java](https://img.shields.io/badge/Java-007396?logo=java&logoColor=white) ![Spring](https://img.shields.io/badge/Spring%20Framework-6DB33F?logo=spring&logoColor=white) ![MyBatis](https://img.shields.io/badge/MyBatis-000000?logoColor=white) ![Maven](https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white) ![Tomcat](https://img.shields.io/badge/Tomcat-F8DC75?logo=apachetomcat&logoColor=black) |
+| **Frontend** | ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) |
+| **Database** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) |
+| **API & Frameworks** | ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white) |
+| **Infra & Tools** | ![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black) ![Anaconda](https://img.shields.io/badge/Anaconda-44A833?logo=anaconda&logoColor=white) |
+| **AI/ML** | ![Exaone](https://img.shields.io/badge/LLM%20(Exaone%203.5)-blueviolet) |
 
 ---
 
